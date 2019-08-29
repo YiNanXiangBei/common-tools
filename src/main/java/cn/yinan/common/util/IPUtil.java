@@ -1,4 +1,4 @@
-package org.yinan.common.util;
+package cn.yinan.common.util;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;

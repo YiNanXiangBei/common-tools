@@ -1,4 +1,4 @@
-package org.yinan.common.container;
+package cn.yinan.common.container;
 
 /**
  * @author yinan

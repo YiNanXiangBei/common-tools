@@ -1,4 +1,4 @@
-package org.yinan.common.util;
+package cn.yinan.common.util;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;

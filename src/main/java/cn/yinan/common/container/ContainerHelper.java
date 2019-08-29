@@ -1,4 +1,4 @@
-package org.yinan.common.container;
+package cn.yinan.common.container;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

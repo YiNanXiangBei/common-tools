@@ -1,10 +1,10 @@
-package org.yinan.common.config;
+package cn.yinan.common.config;
 
 /**
  * @author yinan
  * @date 19-6-10
  */
-import org.yinan.common.util.LangUtil;
+import cn.yinan.common.util.LangUtil;
 
 import java.io.IOException;
 import java.io.InputStream;

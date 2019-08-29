@@ -1,4 +1,4 @@
-package org.yinan.common.util;
+package cn.yinan.common.util;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
