@@ -13,6 +13,16 @@ import java.util.Date;
  * @date 19-8-11
  */
 public class CommonUtil {
+    /**
+     * 针对多个数组进行拼接
+     * @deprecated Do not use this method!
+     * @see CommonUtil#concat2All(Object[][])
+     * @param first
+     * @param rest
+     * @param <T>
+     * @return
+     */
+    @Deprecated
     @SafeVarargs
     public static <T> T[] concatAll(T[] first, T[]... rest) {
         int totalLength = first.length;
@@ -30,9 +40,36 @@ public class CommonUtil {
         return result;
     }
 
+    /**
+     * 针对多个数组进行拼接
+     * @param rest
+     * @param <T>
+     * @return
+     */
+    @SafeVarargs
+    public static <T> T[] concat2All(T[]... rest) {
+        if (rest == null || rest.length == 0) {
+            throw new RuntimeException("can not transport empty params");
+        }
+        if (rest.length == 1) {
+            return rest[0];
+        }
+        int totalLength = 0;
+        for (T[] array : rest) {
+            totalLength += array.length;
+        }
+        T[] result = Arrays.copyOf(rest[0], totalLength);
+        int offset = rest[0].length;
+        for (int i = 1; i < rest.length; i++) {
+            System.arraycopy(rest[i], 0, result, offset, rest[i].length);
+            offset += rest[i].length;
+        }
+        return result;
+    }
+
 
     /**
-     * 为字符串添加日期后缀名,针对数据进行操作
+     * 为字符串添加日期后缀名,针对数组进行操作
      */
     public static String[] appendDate(String[] fileNames) {
         String[] newFileNames = new String[fileNames.length];
@@ -45,7 +82,7 @@ public class CommonUtil {
     }
 
     /**
-     * 为字符串天剑日期后缀名，针对单个字符串
+     * 为字符串添加日期后缀名，针对单个字符串
      * @param fileName
      * @return
      */
@@ -55,6 +92,12 @@ public class CommonUtil {
         return fileName;
     }
 
+    /**
+     * 读取文件到byte数组
+     * @param fileName
+     * @return
+     * @throws IOException
+     */
     public static byte[] readFileFromResource(String fileName) throws IOException {
         URL resource = Thread.currentThread().getContextClassLoader().getResource(fileName);
         RandomAccessFile accessFile = new RandomAccessFile(resource.getFile(), "r");
@@ -64,6 +107,12 @@ public class CommonUtil {
         return bytes;
     }
 
+    /**
+     * 追加数据到配置文件，自动换行
+     * @param fileName
+     * @param value
+     * @throws IOException
+     */
     public static void appendFileToResource(String fileName, String value) throws IOException {
         URL resource = Thread.currentThread().getContextClassLoader().getResource(fileName);
         RandomAccessFile accessFile = new RandomAccessFile(resource.getFile(), "rw");
@@ -76,6 +125,12 @@ public class CommonUtil {
         accessFile.close();
     }
 
+    /**
+     * 写入数据到新的文件
+     * @param fileName
+     * @param value
+     * @throws IOException
+     */
     public static void saveFileToResource(String fileName, String value) throws IOException {
         URL resource = Thread.currentThread().getContextClassLoader().getResource(fileName);
         RandomAccessFile accessFile = new RandomAccessFile(resource.getFile(), "rw");

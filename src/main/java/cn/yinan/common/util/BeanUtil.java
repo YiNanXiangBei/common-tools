@@ -10,6 +10,12 @@ import java.lang.reflect.Method;
  * @date 19-8-11
  */
 public class BeanUtil {
+    /**
+     * 反射获取get方法
+     * @param objectClass 类
+     * @param fieldName 属性名
+     * @return
+     */
     @SuppressWarnings("unchecked")
     public static Method getGetMethod(Class objectClass, String fieldName) {
         StringBuffer sb = new StringBuffer();
